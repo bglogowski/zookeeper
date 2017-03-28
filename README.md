@@ -1,1 +1,1 @@
-# zookeeper
+# ZooKeeper Puppet Module

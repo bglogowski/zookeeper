@@ -1,0 +1,12 @@
+{
+  "name": "bglogowski-zookeeper",
+  "version": "0.0.1",
+  "author": "Bryan Glogowski <bglogowski@marketo.com>",
+  "summary": "Manages ZooKeeper Components",
+  "license": "Apache-2.0",
+  "source": "https://github.com/bglogowski/zookeeper.git",
+  "dependencies": [
+  
+  ],
+  "data_provider": null
+}
