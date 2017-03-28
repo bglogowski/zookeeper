@@ -1,0 +1,2 @@
+*.pp linguist-language=Puppet
+*.rb linguist-language=Ruby
