@@ -1,13 +1,21 @@
+# observer or participant
+
 class zookeeper (
-    $zookeeper_version   = '3.4.9',
-    $zookeeper_cluster   = 'default',
-    $zookeeper_role      = 'regionserver',
+    String $zookeeper_version = '3.4.9',
+    String $zookeeper_cluster = 'default',
+    String $zookeeper_role = 'participant'
   ) {
 
 
-    class { 'zookeeper::users':
-      zookeeper_cluster => $zookeeper_cluster,
-    } ->
+  [ 'zookeeper' ].each |String $user| {
+
+    zookeeper::users { $user:
+      username => $user,
+      before   => Class['zookeeper::install'],
+    }
+
+  }
+
 
     class { 'zookeeper::install':
       zookeeper_version   => $zookeeper_version,

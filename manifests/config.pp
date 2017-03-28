@@ -20,9 +20,8 @@ class zookeeper::config ( $zookeeper_version, $zookeeper_cluster, $zookeeper_rol
     require => File['/etc/zookeeper/conf/'],
   }
 
-  file { '/etc/zookeeper/conf/.role':
+  file { "/etc/zookeeper/conf/.${zookeeper_role}":
     ensure  => 'file',
-    content => $zookeeper_role,
     require => File['/etc/zookeeper/conf/'],
   }
 
