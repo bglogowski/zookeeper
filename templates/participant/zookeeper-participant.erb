@@ -1,0 +1,37 @@
+[Unit]
+Description=The Hadoop datanode daemon
+After=network.target
+After=NetworkManager.target
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/sysconfig/hadoop-hdfs
+EnvironmentFile=-/etc/sysconfig/hadoop-datanode
+ExecStart=/usr/sbin/hadoop-daemon.sh start datanode
+ExecStop=/usr/sbin/hadoop-daemon.sh stop datanode
+User=hdfs
+Group=hadoop
+PIDFile=/var/run/hadoop-hdfs/hadoop-hdfs-datanode.pid
+LimitNOFILE=32768
+LimitNPROC=65536
+
+#######################################
+# Note: Below are cgroup options
+#######################################
+#Slice=
+#CPUAccounting=true
+#CPUShares=1024
+
+#MemoryAccounting=true
+#TBD: MemoryLimit=bytes, MemorySoftLimit=bytes
+
+#BlockIOAccounting=true
+#BlockIOWeight=??
+#BlockIODeviceWeight=??
+#TBD: BlockIOReadBandwidth=bytes, BlockIOWriteBandwidth=bytes
+
+#DeviceAllow=
+#DevicePolicy=auto|closed|strict
+
+[Install]
+WantedBy=multi-user.target
